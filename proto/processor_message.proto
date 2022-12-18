@@ -2,7 +2,7 @@ syntax = "proto3";
 
 import "proto/memory_message.proto";
 option go_package = "./pb";
-package techshool.pcbook;
+package techschool.pcbook;
 
 message CPU {
     string brand = 1;

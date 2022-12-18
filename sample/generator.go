@@ -1,14 +1,14 @@
 package sample
 
 import (
-	pb "github.com/wafuwafu13/the-complete-grpc-course/pb/proto"
 	"github.com/golang/protobuf/ptypes"
+	pb "github.com/wafuwafu13/the-complete-grpc-course/pb/proto"
 )
 
 // NewKeybord returns a new sample keyboard
 func NewKeyboard() *pb.Keyboard {
 	keybord := &pb.Keyboard{
-		Layout: randomKeyboardLayout(),
+		Layout:  randomKeyboardLayout(),
 		Backlit: randomBool(),
 	}
 	return keybord

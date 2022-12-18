@@ -1,5 +1,5 @@
 syntax = "proto3";
-package techshool.pcbook;
+package techschool.pcbook;
 option go_package = "./pb";
 
 message Screen {

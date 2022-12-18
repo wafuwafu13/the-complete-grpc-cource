@@ -1,10 +1,10 @@
 package sample
 
 import (
+	"github.com/google/uuid"
 	pb "github.com/wafuwafu13/the-complete-grpc-course/pb/proto"
 	"math/rand"
 	"time"
-	"github.com/google/uuid"
 )
 
 func init() {
