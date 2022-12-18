@@ -8,7 +8,7 @@ message Keyboard {
         UNKNOWN = 0;
         QWERTY = 1;
         QWERTZ = 2;
-        AZWRTY = 3;
+        AZERTY = 3;
     }
 
     Layout layout = 1;

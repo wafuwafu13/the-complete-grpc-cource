@@ -1,0 +1,62 @@
+{
+  "id": "9e4cf7f0-9b35-4f25-a468-56b21524ae79",
+  "brand": "Apple",
+  "name": "Macbook Air",
+  "cpu": {
+    "brand": "Intel",
+    "name": "Xeon E-2286M",
+    "number_cores": 6,
+    "number_threads": 11,
+    "min_ghz": 2.452928396519139,
+    "max_ghz": 2.4929010898765105
+  },
+  "ram": {
+    "value": "40",
+    "unit": 5
+  },
+  "gpus": [
+    {
+      "brand": "Nvidia",
+      "name": "RTX 2070",
+      "min_ghz": 1.4712742773332506,
+      "max_ghz": 1.774714111049836,
+      "memory": {
+        "value": "5",
+        "unit": 5
+      }
+    }
+  ],
+  "storages": [
+    {
+      "driver": 2,
+      "memory": {
+        "value": "918",
+        "unit": 5
+      }
+    },
+    {
+      "driver": 1,
+      "memory": {
+        "value": "6",
+        "unit": 6
+      }
+    }
+  ],
+  "screen": {
+    "size_inch": 16.651207,
+    "resolution": {
+      "width": 5432,
+      "height": 3056
+    },
+    "panel": 1,
+    "multitouch": false
+  },
+  "keyboard": {
+    "layout": 1,
+    "backlit": false
+  },
+  "weight_kg": 1.664252692625832,
+  "price_usd": 1564.5214320906562,
+  "release_year": 2015,
+  "updated_at": "2022-12-18T04:22:57.145862Z"
+}
