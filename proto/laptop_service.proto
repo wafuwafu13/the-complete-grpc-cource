@@ -3,7 +3,7 @@ syntax = "proto3";
 package techschool.pcbook;
 option go_package = "./pb";
 import "proto/laptop_message.proto";
-// import "filter_message.proto";
+import "proto/filter_message.proto";
 // import "google/api/annotations.proto";
 
 message CreateLaptopRequest { 
@@ -14,9 +14,13 @@ message CreateLaptopResponse {
   string id = 1;
 }
 
-// message SearchLaptopRequest { Filter filter = 1; }
+message SearchLaptopRequest { 
+  Filter filter = 1; 
+}
 
-// message SearchLaptopResponse { Laptop laptop = 1; }
+message SearchLaptopResponse { 
+  Laptop laptop = 1; 
+}
 
 // message UploadImageRequest {
 //   oneof data {
@@ -48,7 +52,7 @@ message CreateLaptopResponse {
 
 service LaptopService {
   rpc CreateLaptop(CreateLaptopRequest) returns (CreateLaptopResponse) {};
-//   rpc SearchLaptop(SearchLaptopRequest) returns (stream SearchLaptopResponse) {
+  rpc SearchLaptop(SearchLaptopRequest) returns (stream SearchLaptopResponse);
 //     option (google.api.http) = {
 //       get : "/v1/laptop/search"
 //     };
