@@ -22,22 +22,22 @@ message SearchLaptopResponse {
   Laptop laptop = 1; 
 }
 
-// message UploadImageRequest {
-//   oneof data {
-//     ImageInfo info = 1;
-//     bytes chunk_data = 2;
-//   };
-// }
+message UploadImageRequest {
+  oneof data {
+    ImageInfo info = 1;
+    bytes chunk_data = 2;
+  };
+}
 
-// message ImageInfo {
-//   string laptop_id = 1;
-//   string image_type = 2;
-// }
+message ImageInfo {
+  string laptop_id = 1;
+  string image_type = 2;
+}
 
-// message UploadImageResponse {
-//   string id = 1;
-//   uint32 size = 2;
-// }
+message UploadImageResponse {
+  string id = 1;
+  uint32 size = 2;
+}
 
 // message RateLaptopRequest {
 //   string laptop_id = 1;
@@ -57,7 +57,7 @@ service LaptopService {
 //       get : "/v1/laptop/search"
 //     };
 //   };
-//   rpc UploadImage(stream UploadImageRequest) returns (UploadImageResponse) {
+  rpc UploadImage(stream UploadImageRequest) returns (UploadImageResponse);
 //     option (google.api.http) = {
 //       post : "/v1/laptop/upload_image"
 //       body : "*"
