@@ -29,6 +29,12 @@ type LaptopServiceClient interface {
 	//	  };
 	//	};
 	UploadImage(ctx context.Context, opts ...grpc.CallOption) (LaptopService_UploadImageClient, error)
+	//	  option (google.api.http) = {
+	//	    post : "/v1/laptop/upload_image"
+	//	    body : "*"
+	//	  };
+	//	};
+	RateLaptop(ctx context.Context, opts ...grpc.CallOption) (LaptopService_RateLaptopClient, error)
 }
 
 type laptopServiceClient struct {
@@ -114,6 +120,37 @@ func (x *laptopServiceUploadImageClient) CloseAndRecv() (*UploadImageResponse, e
 	return m, nil
 }
 
+func (c *laptopServiceClient) RateLaptop(ctx context.Context, opts ...grpc.CallOption) (LaptopService_RateLaptopClient, error) {
+	stream, err := c.cc.NewStream(ctx, &LaptopService_ServiceDesc.Streams[2], "/techschool.pcbook.LaptopService/RateLaptop", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &laptopServiceRateLaptopClient{stream}
+	return x, nil
+}
+
+type LaptopService_RateLaptopClient interface {
+	Send(*RateLaptopRequest) error
+	Recv() (*RateLaptopResponse, error)
+	grpc.ClientStream
+}
+
+type laptopServiceRateLaptopClient struct {
+	grpc.ClientStream
+}
+
+func (x *laptopServiceRateLaptopClient) Send(m *RateLaptopRequest) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *laptopServiceRateLaptopClient) Recv() (*RateLaptopResponse, error) {
+	m := new(RateLaptopResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // LaptopServiceServer is the server API for LaptopService service.
 // All implementations should embed UnimplementedLaptopServiceServer
 // for forward compatibility
@@ -125,6 +162,12 @@ type LaptopServiceServer interface {
 	//	  };
 	//	};
 	UploadImage(LaptopService_UploadImageServer) error
+	//	  option (google.api.http) = {
+	//	    post : "/v1/laptop/upload_image"
+	//	    body : "*"
+	//	  };
+	//	};
+	RateLaptop(LaptopService_RateLaptopServer) error
 }
 
 // UnimplementedLaptopServiceServer should be embedded to have forward compatible implementations.
@@ -139,6 +182,9 @@ func (UnimplementedLaptopServiceServer) SearchLaptop(*SearchLaptopRequest, Lapto
 }
 func (UnimplementedLaptopServiceServer) UploadImage(LaptopService_UploadImageServer) error {
 	return status.Errorf(codes.Unimplemented, "method UploadImage not implemented")
+}
+func (UnimplementedLaptopServiceServer) RateLaptop(LaptopService_RateLaptopServer) error {
+	return status.Errorf(codes.Unimplemented, "method RateLaptop not implemented")
 }
 
 // UnsafeLaptopServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -217,6 +263,32 @@ func (x *laptopServiceUploadImageServer) Recv() (*UploadImageRequest, error) {
 	return m, nil
 }
 
+func _LaptopService_RateLaptop_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(LaptopServiceServer).RateLaptop(&laptopServiceRateLaptopServer{stream})
+}
+
+type LaptopService_RateLaptopServer interface {
+	Send(*RateLaptopResponse) error
+	Recv() (*RateLaptopRequest, error)
+	grpc.ServerStream
+}
+
+type laptopServiceRateLaptopServer struct {
+	grpc.ServerStream
+}
+
+func (x *laptopServiceRateLaptopServer) Send(m *RateLaptopResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *laptopServiceRateLaptopServer) Recv() (*RateLaptopRequest, error) {
+	m := new(RateLaptopRequest)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // LaptopService_ServiceDesc is the grpc.ServiceDesc for LaptopService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -238,6 +310,12 @@ var LaptopService_ServiceDesc = grpc.ServiceDesc{
 		{
 			StreamName:    "UploadImage",
 			Handler:       _LaptopService_UploadImage_Handler,
+			ClientStreams: true,
+		},
+		{
+			StreamName:    "RateLaptop",
+			Handler:       _LaptopService_RateLaptop_Handler,
+			ServerStreams: true,
 			ClientStreams: true,
 		},
 	},
