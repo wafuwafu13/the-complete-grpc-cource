@@ -24,16 +24,7 @@ const _ = grpc.SupportPackageIsVersion7
 type LaptopServiceClient interface {
 	CreateLaptop(ctx context.Context, in *CreateLaptopRequest, opts ...grpc.CallOption) (*CreateLaptopResponse, error)
 	SearchLaptop(ctx context.Context, in *SearchLaptopRequest, opts ...grpc.CallOption) (LaptopService_SearchLaptopClient, error)
-	//	  option (google.api.http) = {
-	//	    get : "/v1/laptop/search"
-	//	  };
-	//	};
 	UploadImage(ctx context.Context, opts ...grpc.CallOption) (LaptopService_UploadImageClient, error)
-	//	  option (google.api.http) = {
-	//	    post : "/v1/laptop/upload_image"
-	//	    body : "*"
-	//	  };
-	//	};
 	RateLaptop(ctx context.Context, opts ...grpc.CallOption) (LaptopService_RateLaptopClient, error)
 }
 
@@ -157,16 +148,7 @@ func (x *laptopServiceRateLaptopClient) Recv() (*RateLaptopResponse, error) {
 type LaptopServiceServer interface {
 	CreateLaptop(context.Context, *CreateLaptopRequest) (*CreateLaptopResponse, error)
 	SearchLaptop(*SearchLaptopRequest, LaptopService_SearchLaptopServer) error
-	//	  option (google.api.http) = {
-	//	    get : "/v1/laptop/search"
-	//	  };
-	//	};
 	UploadImage(LaptopService_UploadImageServer) error
-	//	  option (google.api.http) = {
-	//	    post : "/v1/laptop/upload_image"
-	//	    body : "*"
-	//	  };
-	//	};
 	RateLaptop(LaptopService_RateLaptopServer) error
 }
 

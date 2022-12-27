@@ -1,0 +1,15 @@
+```
+$ curl -X POST -H "Content-Type: application/json" -d \
+'{
+  "username": "admin1",
+  "password": "secret"
+}' http://localhost:8081/v1/auth/login
+{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzIxMzM5MzYsInVzZXJuYW1lIjoiYWRtaW4xIiwicm9sZSI6ImFkbWluIn0.AVgPjlwinVJpbC__GEPrBRUTHKwFky-IcRXw2C1K2aY"}
+```
+
+```
+$ curl "http://localhost:8081/v1/laptop/search?filter.max_price_usd=5000&filter.min_cpu_cores=2&filter.min_cpu_ghz=2.0&filter.min_ram.value=3&filter.min_ram.unit=GIGABYTE"
+{"result":{"laptop":{"id":"82031a33-3fe0-4e79-aff8-f84734a2c64d","brand":"Dell","name":"XPS","cpu":{"brand":"Intel","name":"Core i7-9750H","numberCores":5,"numberThreads":5,"minGhz":2.268240813188255,"maxGhz":3.272870812427533},"ram":{"value":"52","unit":"GIGABYTE"},"gpus":[{"brand":"Nvidia","name":"RTX 2060","minGhz":1.0795500640821192,"maxGhz":1.8636085006102134,"memory":{"value":"4","unit":"GIGABYTE"}}],"storages":[{"driver":"SSD","memory":{"value":"345","unit":"GIGABYTE"}},{"driver":"HDD","memory":{"value":"6","unit":"TERABYTE"}}],"screen":{"sizeInch":15.217651,"resolution":{"width":4241,"height":2386},"panel":"IPS","multitouch":true},"keyboard":{"layout":"QWERTY","backlit":true},"weightKg":1.423597109641004,"priceUsd":1523.712334973481,"releaseYear":2017,"updatedAt":"2022-12-27T09:37:45.552595Z"}}}
+{"result":{"laptop":{"id":"3e1cd266-fddd-44af-96c2-a81b6c107c83","brand":"Apple","name":"Macbook Air","cpu":{"brand":"AMD","name":"Ryzen 3 PRO 3200GE","numberCores":2,"numberThreads":6,"minGhz":3.29677439979044,"maxGhz":4.4069573278099154},"ram":{"value":"62","unit":"GIGABYTE"},"gpus":[{"brand":"AMD","name":"RX 590","minGhz":1.2997696412498185,"maxGhz":1.9029883873589897,"memory":{"value":"6","unit":"GIGABYTE"}}],"storages":[{"driver":"SSD","memory":{"value":"696","unit":"GIGABYTE"}},{"driver":"HDD","memory":{"value":"6","unit":"TERABYTE"}}],"screen":{"sizeInch":16.690855,"resolution":{"width":3040,"height":1710},"panel":"OLED","multitouch":false},"keyboard":{"layout":"AZERTY","backlit":false},"weightKg":1.2899798524354722,"priceUsd":2090.8298945259307,"releaseYear":2019,"updatedAt":"2022-12-27T09:37:45.553164Z"}}}
+{"result":{"laptop":{"id":"e19ec27f-1e01-46ba-8a8e-43a0245d9331","brand":"Lenovo","name":"Thinkpad P53","cpu":{"brand":"AMD","name":"Ryzen 5 PRO 3500U","numberCores":5,"numberThreads":10,"minGhz":2.580451079217555,"maxGhz":4.974841530283422},"ram":{"value":"63","unit":"GIGABYTE"},"gpus":[{"brand":"AMD","name":"RX 5700-XT","minGhz":1.185963620324186,"maxGhz":1.7089210437791422,"memory":{"value":"5","unit":"GIGABYTE"}}],"storages":[{"driver":"SSD","memory":{"value":"915","unit":"GIGABYTE"}},{"driver":"HDD","memory":{"value":"4","unit":"TERABYTE"}}],"screen":{"sizeInch":14.958453,"resolution":{"width":5521,"height":3106},"panel":"OLED","multitouch":true},"keyboard":{"layout":"AZERTY","backlit":false},"weightKg":2.1107777195505157,"priceUsd":3316.1048256458853,"releaseYear":2015,"updatedAt":"2022-12-27T09:37:45.549283Z"}}}
+```
